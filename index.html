@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Randsfjordferja – Ute av drift?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 60px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      font-size: 1.6em;
+      margin-bottom: 30px;
+    }
+
+    .melding {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 0 auto 20px;
+      padding: 20px;
+      max-width: 600px;
+      border-radius: 12px;
+      border: 4px solid transparent;
+    }
+
+    .drift {
+      color: #155724;
+      border-color: #28a745;
+      background-color: #eafaf1;
+    }
+
+    .ikke-drift {
+      color: #721c24;
+      border-color: #dc3545;
+      background-color: #fcebea;
+    }
+
+    img {
+      max-width: 320px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .driftsmelding {
+      margin-top: 20px;
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Er Randsfjordferja ute av drift?</h1>
+
+  <div id="melding" class="melding"></div>
+  <div><img id="bilde" src="" alt=""></div>
+  <p id="driftsmelding" class="driftsmelding"></p>
+
+
+
+  <!-- 🧠 Dynamisk status hentes fra ferjestatus.js -->
+  <script src="ferjestatus.js"></script>
+
+</body>
+</html>
