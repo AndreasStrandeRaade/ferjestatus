@@ -1,16 +1,13 @@
-// Sett inn din Google Drive file ID her 👇
-const statusUrl = "https://drive.google.com/uc?export=download&id=1wj9xM1_7L4vI0zG_6sENn2V58KHifHaG";
+const fileId = "1wj9xM1_7L4vI0zG_6sENn2V58KHifHaG";  // din Google Drive-fil-ID
+const apiKey = "AIzaSyDlPK8WkSWpaoIQ4MX-tR8MYYkSESZExAg";              // din Google API-nøkkel
 
-fetch(statusUrl)
+fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`)
   .then(response => response.text())
   .then(text => {
-    const lines = text.split('\n');
-    const uteAvDrift = lines[0].trim() === 'true';
-    const tilleggsinfo = lines.slice(1).join('\n').trim();
+    const uteAvDrift = text.trim().toLowerCase() === "true";
 
-    const meldingEl = document.getElementById('melding');
-    const bildeEl = document.getElementById('bilde');
-    const driftsEl = document.getElementById('driftsmelding');
+    const meldingEl = document.getElementById("melding");
+    const bildeEl = document.getElementById("bilde");
 
     if (uteAvDrift) {
       meldingEl.textContent = "😢 Jepp – Randsfjordferja er ute av drift.";
@@ -23,12 +20,7 @@ fetch(statusUrl)
       bildeEl.src = "idrift.png";
       bildeEl.alt = "Ferja er i drift";
     }
-
-    if (tilleggsinfo.length > 0) {
-      driftsEl.textContent = tilleggsinfo;
-    }
   })
   .catch(error => {
-    console.error("Klarte ikke hente statusfil:", error);
-    document.getElementById('melding').textContent = "⚠️ Klarte ikke hente ferjestatus.";
+    console.error("Kunne ikke hente ferjestatus:", error);
   });
